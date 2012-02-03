@@ -6,4 +6,8 @@
 (deftest test-digits-from-string
   (with-open [rdr (io/reader (.getBytes "   \n  |\n  |\n"))]
     (is (= [1] (read-digits rdr)))))
+
+(deftest test-question-mark-from-bogon
+  (with-open [rdr (io/reader (.getBytes "   \n ||\n  |\n"))]
+    (is (= [\?] (read-digits rdr)))))
                                                

@@ -21,7 +21,7 @@
        (apply map vector)
        (partition-all 3)
        (map (comp rotate digit-grid))
-       (map grid-to-number)))
+       (map (fn [g]  (grid-to-number g \?)))))
 
 (defn read-file [filename]
   (with-open [rdr (io/reader filename)]
