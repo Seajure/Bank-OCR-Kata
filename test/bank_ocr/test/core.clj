@@ -4,5 +4,6 @@
   (:use [clojure.test]))
 
 (deftest test-digits-from-string
-  (is (= [1] (read-digits (io/reader (.getBytes "   \n  |\n  |\n"))))))
+  (with-open [rdr (io/reader (.getBytes "   \n  |\n  |\n"))]
+    (is (= [1] (read-digits rdr)))))
                                                

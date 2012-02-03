@@ -16,16 +16,12 @@
       (char-map char))))
 
 (defn read-digits [rdr]
-  (let [lines (line-seq rdr)
-        non-blank-lines (remove empty? lines)
-        columns (apply map vector non-blank-lines)
-        digit-grids (partition-all 3 columns)
-        rotated-grids (for [grid digit-grids]
-                        (rotate (digit-grid grid)))
-        numbers (map grid-to-number rotated-grids)]
-    (doseq [digit digit-grids]
-      (println (interpose \newline rotated-grids)))
-    numbers))
+  (->> (line-seq rdr)
+       (remove empty?)
+       (apply map vector)
+       (partition-all 3)
+       (map (comp rotate digit-grid))
+       (map grid-to-number)))
 
 (defn read-file [filename]
   (with-open [rdr (io/reader filename)]
