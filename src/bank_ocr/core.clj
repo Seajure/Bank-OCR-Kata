@@ -1,7 +1,10 @@
 (ns bank-ocr.core
   (:require [clojure.java.io :as io]))
+(def grid-to-number {[[" " "_" " "]
+                      ["|" " " "|"]
+                      ["|" "_" "|"]] 0
 
-(def grid-to-number {[[" " " " " "]
+                     [[" " " " " "]
                       [" " " " "|"]
                       [" " " " "|"]] 1
 

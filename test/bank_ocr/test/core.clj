@@ -13,4 +13,4 @@
 
 (deftest test-full-file
   (with-open [rdr (io/reader "resources/digits.txt")]
-    (is (= (range 1 10) (read-digits rdr)))))
+    (is (= (range 0 10) (read-digits rdr)))))
